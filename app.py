@@ -88,3 +88,37 @@ if image is not None:
 
     # ====== Display Result ======
     st.success(f"🩹 **Predicted Disease:** {class_labels[predicted_class]}")
+        # ====== Suggested Medicines ======
+    medicine_suggestions = {
+        0: ["Benzoyl Peroxide", "Clindamycin", "Adapalene", "Tretinoin", "Azelaic Acid", "Doxycycline", "Isotretinoin"],
+        1: ["Fluorouracil", "Imiquimod", "Diclofenac", "Ingenol mebutate", "Efudex", "Picato", "Solaraze"],
+        2: ["Hydrocortisone", "Tacrolimus", "Pimecrolimus", "Antihistamines", "Dupilumab", "Cetrizine", "Eucerin Cream"],
+        3: ["Cephalexin", "Clindamycin", "Dicloxacillin", "Vancomycin", "Linezolid", "Penicillin", "Amoxicillin"],
+        4: ["Hydrocortisone", "Mometasone", "Antihistamines", "Tacrolimus", "Coal Tar", "Cetrizine", "Eucerin"],
+        5: ["Paracetamol", "Ibuprofen", "Diphenhydramine", "Calamine Lotion", "Cetirizine", "Hydrocortisone", "Acyclovir"],
+        6: ["Acyclovir", "Valacyclovir", "Famciclovir", "Abreva", "Penciclovir", "Ibuprofen", "Lidocaine gel"],
+        7: ["Hydroquinone", "Tretinoin", "Azelaic Acid", "Corticosteroids", "Niacinamide", "Vitamin C", "Kojic Acid"],
+        8: ["Hydroxychloroquine", "Prednisone", "Methotrexate", "Azathioprine", "Belimumab", "Mycophenolate", "NSAIDs"],
+        9: ["Dacarbazine", "Interferon-alpha", "Nivolumab", "Pembrolizumab", "Ipilimumab", "BRAF Inhibitors", "MEK Inhibitors"],
+        10: ["Hydrocortisone", "Calamine Lotion", "Diphenhydramine", "Oatmeal Bath", "Prednisone", "Cetirizine", "Antihistamines"],
+        11: ["Topical Steroids", "Coal Tar", "Vitamin D Analogues", "Methotrexate", "Biologics", "Salicylic Acid", "Cyclosporine"],
+        12: ["Salicylic Acid", "Urea Cream", "Cryotherapy", "Topical Retinoids", "Hydrocortisone", "Laser Therapy", "Electrosurgery"],
+        13: ["Prednisone", "Methotrexate", "Cyclophosphamide", "Azathioprine", "Mycophenolate", "Rituximab", "NSAIDs"],
+        14: ["Clotrimazole", "Miconazole", "Terbinafine", "Fluconazole", "Griseofulvin", "Ketoconazole", "Tolnaftate"],
+        15: ["Antihistamines", "Corticosteroids", "Omalizumab", "Montelukast", "Cetirizine", "Loratadine", "Hydroxyzine"],
+        16: ["Propranolol", "Prednisone", "Vincristine", "Interferon", "Laser Therapy", "Atenolol", "Timolol"],
+        17: ["Prednisone", "Cyclophosphamide", "Azathioprine", "Methotrexate", "Mycophenolate", "Rituximab", "NSAIDs"],
+        18: ["Salicylic Acid", "Cryotherapy", "Imiquimod", "Cantharidin", "Trichloroacetic Acid", "Laser Treatment", "Podophyllin"]
+    }
+
+    suggested_meds = medicine_suggestions.get(predicted_class, ["No medicines available."])
+
+    st.markdown("### 💊 Suggested Medicines:")
+    for med in suggested_meds:
+        st.markdown(f"- {med}")
+
+    # ====== Medical Disclaimer ======
+    st.markdown(
+        "<p style='color:red; font-weight:bold;'>⚠️ Note: Use medicines only as prescribed by a certified dermatologist.</p>",
+        unsafe_allow_html=True
+    )
